@@ -22,5 +22,5 @@ At first IDK anything about Dart, so i am going to learn it through project and 
 I got some problems while creating setup environment for flutter
 
 ### problems - 
-    1. [Flutter](https://flutter.dev/docs) Doctor said I am not healthy so i need to follow his conditions
+    1. - [Flutter](https://flutter.dev/docs), Doctor said I am not healthy so i need to follow his conditions
         by installing all stuffs as he said. 
