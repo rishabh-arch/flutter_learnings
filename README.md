@@ -1,25 +1,24 @@
-<!-- # flutter_catalog
+# WHAT THE Fu#k is this?
+import 'package:flutter/material.dart';
 
-A new Flutter project.
+void main() {
+  runApp(const MyApp());
+}
 
-## Getting Started
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-This project is a starting point for a Flutter application.
+  @override
+  Widget build(BuildContext context) {
+    const int days = 0;
+    return const MaterialApp(
+      home:  Material(
+        child: Center(
+          
+          child: Text("$days  World"),
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference. -->
-
-# flutter_catalog
-At first IDK anything about Dart, so i am going to learn it through project and makes notes here.
-
-## Installing first time
-I got some problems while creating setup environment for flutter
-
-### problems - 
-1. - [Flutter](https://flutter.dev/docs),Doctor said I am not healthy so i need to follow his conditions
-        by installing all stuffs as he said. 
+        ),
+      ),
+    );
+  }
+}
