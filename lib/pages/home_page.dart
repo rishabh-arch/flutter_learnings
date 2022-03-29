@@ -9,23 +9,30 @@ class HomePage extends StatelessWidget {
  
     return Scaffold(
       appBar: AppBar(
-
-        title:const Text('Khamakham'),
-        centerTitle: true,
-        backgroundColor: Colors.red,
+        title:const Text('Khamakha'),
+        // centerTitle: true,
+        // backgroundColor: Color.fromARGB(255, 51, 45, 128),
       ),
       body: Center(
-        child: Text('Hello World!',
-          style: Theme.of(context).textTheme.headline4,
-        ),
+        // child: Text('Hello World!',
+        //   style: Theme.of(context).textTheme.headline4,
+        // ),
+        child: RaisedButton(
+          child: Text('Go to Login Page'),
+          onPressed: () {
+            Navigator.pushNamed(context, '/login');
+          },
+      ),
       ),
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            DrawerHeader(
+            const DrawerHeader(
               child: Text('Drawer Header'),
+              //change font color
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color.fromARGB(255, 1, 32, 58),
+                
               ),
             ),
             ListTile(
