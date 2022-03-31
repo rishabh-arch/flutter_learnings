@@ -8,7 +8,7 @@ class MyDrawer extends StatelessWidget {
     const imageUrl =
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngarts.com%2Ffiles%2F5%2FUser-Avatar-PNG-Transparent-Image.png&f=1&nofb=1";
     return Drawer(
-      backgroundColor: Color.fromARGB(255, 51, 45, 128),
+      backgroundColor: const Color.fromARGB(255, 4, 56, 80),
       // 673ab7
       child: ListView(
         // padding: EdgeInsets.zero,
@@ -18,7 +18,11 @@ class MyDrawer extends StatelessWidget {
         children: <Widget>[
           const DrawerHeader(
             padding: EdgeInsets.zero,
+
             child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+        color: Colors.transparent
+      ),
               margin: EdgeInsets.zero,
               accountName: Text("Rishabh Garg"),
               accountEmail: Text("rishabhgargts@gmail.com"),

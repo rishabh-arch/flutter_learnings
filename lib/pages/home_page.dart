@@ -11,19 +11,26 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Khamakha'),
-        // centerTitle: true,
+        centerTitle: true,
         // backgroundColor: Color.fromARGB(255, 51, 45, 128),
       ),
       body: Center(
         // child: Text('Hello World!',
         //   style: Theme.of(context).textTheme.headline4,
         // ),
-        child: RaisedButton(
-          child: Text('Go to Login Page'),
+        child:ElevatedButton(
           onPressed: () {
             Navigator.pushNamed(context, '/login');
           },
+          child: const Text('Login'),
         ),
+        
+        // child: RaisedButton(
+        //   child: Text('Go to Login Page'),
+        //   onPressed: () {
+        //     Navigator.pushNamed(context, '/login');
+        //   },
+        // ),
       ),
       drawer: MyDrawer(),
     );
