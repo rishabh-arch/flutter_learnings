@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    // await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     await rootBundle.loadString('assets/files/catalog.json').then((jsonStr) {
       final jsonResponse = jsonDecode(jsonStr);
       // final productsAsList = jsonResponse['products'] as List;

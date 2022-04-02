@@ -12,7 +12,9 @@ class CatalogItem extends StatelessWidget {
     return VxBox(
       child: Row(
         children: [
-          CatalogImage(image: catalog.image),
+          Hero(
+            tag: Key(catalog.image.toString()),
+            child: CatalogImage(image: catalog.image)),
           Expanded(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
