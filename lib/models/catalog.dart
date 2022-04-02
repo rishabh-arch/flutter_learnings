@@ -13,32 +13,24 @@ class Item {
       required this.desc,
       required this.color,
       required this.image});
-}
+
+    Item.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        name = json['name'],
+        price = json['price'],
+        desc = json['desc'],
+        color = json['color'],
+        image = json['image'];
+    toMap()=>{
+      "id":id,
+      "name":name,
+      "price":price,
+      "desc":desc,
+      "color":color,
+      "image":image
+    };
+    }
 
 class CatalogModel {
-  static final items = [
-    Item(
-        id: 1,
-        name: "Dog Meme",
-        price: 999,
-        desc: "Funnnny",
-        color: "#3305a",
-        image:
-            "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fbreakforbuzz.com%2Fwp-content%2Fuploads%2F2019%2F02%2FImage-dr%25C3%25B4le-du-jour-Mais-non-tes-pas-gros%25E2%2580%25A6.png&f=1&nofb=1"), Item(
-        id: 2,
-        name: "Dog Meme",
-        price: 899,
-        desc: "Funnnny",
-        color: "#3305a",
-        image:
-            "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fbreakforbuzz.com%2Fwp-content%2Fuploads%2F2019%2F02%2FImage-dr%25C3%25B4le-du-jour-Mais-non-tes-pas-gros%25E2%2580%25A6.png&f=1&nofb=1"),
-             Item(
-        id: 3,
-        name: "Dog Meme",
-        price: 799,
-        desc: "Funnnny",
-        color: "#3305a",
-        image:
-            "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fbreakforbuzz.com%2Fwp-content%2Fuploads%2F2019%2F02%2FImage-dr%25C3%25B4le-du-jour-Mais-non-tes-pas-gros%25E2%2580%25A6.png&f=1&nofb=1")
-  ];
+  static List<Item> items = [];
 }
