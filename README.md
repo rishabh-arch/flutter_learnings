@@ -18,4 +18,9 @@ I got some problems while creating setup environment for flutter
 
 4. - [Velocity_x](https://velocityx.dev/docs/install) for flutter Ui design
 
+5. - [Slivers in Flutter](https://medium.flutterdevs.com/explore-slivers-in-flutter-d44073bffdf6)
+
+5. - [Scrolling Animations in Flutter](https://medium.com/flutter-community/scrolling-animation-in-flutter-6a6718b8e34f)
+
+
         
