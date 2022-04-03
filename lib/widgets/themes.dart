@@ -62,8 +62,10 @@ class MyTheme {
             color: Color.fromARGB(255, 227, 227, 227),
             fontSize: 20,
             // alignSelf: Alignment.center,
-            
           ),
+          
+//  foregroundColor: Colors.white,    
+toolbarTextStyle: TextStyle(color: Colors.white),     
         ),
   );
 

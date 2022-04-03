@@ -14,23 +14,34 @@ class Item {
       required this.color,
       required this.image});
 
-    Item.fromJson(Map<String, dynamic> json)
+  Item.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         name = json['name'],
         price = json['price'],
         desc = json['desc'],
         color = json['color'],
         image = json['image'];
-    toMap()=>{
-      "id":id,
-      "name":name,
-      "price":price,
-      "desc":desc,
-      "color":color,
-      "image":image
-    };
-    }
+  toMap() => {
+        "id": id,
+        "name": name,
+        "price": price,
+        "desc": desc,
+        "color": color,
+        "image": image
+      };
+}
 
 class CatalogModel {
   static List<Item> items = [];
+
+//Get Item by Id
+  static Item getItemById(int id) {
+    return items.firstWhere((item) => item.id == id);
+  }
+//Get Item by Postion
+  static Item getItemByPosition(int position) {
+    return items[position];
+  }
+
+
 }
