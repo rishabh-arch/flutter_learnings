@@ -9,7 +9,13 @@ class MyTheme {
         textTheme: GoogleFonts.latoTextTheme(
           Theme.of(context).textTheme,
         ),
+         primaryColorLight: const Color.fromARGB(255, 1, 20, 35),
+          cardColor: const Color.fromARGB(255, 235, 235, 237),
         secondaryHeaderColor: darkBluishColor,
+           floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: Color.fromARGB(255, 100, 82, 173),
+      foregroundColor: Color.fromARGB(255, 255, 255, 255),
+    ),
         appBarTheme:const AppBarTheme(
           color: Colors.white,
           elevation: 0.0,
@@ -29,7 +35,7 @@ class MyTheme {
     
     // primarySwatch: Colors.deepPurple,
     cardColor: const Color.fromARGB(255, 7, 26, 44),
-    cardTheme: CardTheme(
+    cardTheme: const CardTheme(
       color: Color.fromARGB(255, 92, 164, 232),
       elevation: 0.0,
     ),
@@ -61,9 +67,9 @@ class MyTheme {
         ),
   );
 
-static Color creamColor = Color(0xFFF5F5F5);
-static Color darkBluishColor = Color(0xFF403b58);
-static Color darkcreamColor = Color.fromARGB(255, 19, 15, 42);
-static Color lightBluishColor = Color.fromARGB(255, 90, 67, 202);
+static Color creamColor = const Color(0xFFF5F5F5);
+static Color darkBluishColor = const Color(0xFF403b58);
+static Color darkcreamColor = const Color.fromARGB(255, 19, 15, 42);
+static Color lightBluishColor = const Color.fromARGB(255, 90, 67, 202);
 
 }
