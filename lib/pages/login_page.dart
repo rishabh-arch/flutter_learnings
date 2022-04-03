@@ -28,12 +28,12 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: Theme.of(context).canvasColor,
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Image.asset(
-              'assets/images/login.png',
+              'assets/images/login2.png',
               fit: BoxFit.cover,
               height: 330,
             ),
@@ -41,8 +41,8 @@ class _LoginPageState extends State<LoginPage> {
               height: 50,
               child: Text(
                 // 'We will Welcome $name You After',
-                "Hi $name Welcome to Hell",
-                style: TextStyle(fontSize: 30),
+                "Hi Welcome to Hell",
+                style: TextStyle(fontSize: 30,color: Theme.of(context).secondaryHeaderColor),
               ),
             ),
             const Text(
@@ -72,18 +72,16 @@ class _LoginPageState extends State<LoginPage> {
                           }
                           return null;
                         },
-                     
                       ),
                       TextFormField(
                         decoration: const InputDecoration(
                           hintText: "Enter Password",
                           labelText: "Password",
                         ),
-                         validator: (value) {
+                        validator: (value) {
                           if (value!.isEmpty) {
                             return "Please Enter Password";
-                          }
-                          else if(value.length<6){
+                          } else if (value.length < 6) {
                             return "Password must be at least 6 characters";
                           }
                           return null;
@@ -128,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                                 BorderRadius.circular(changeButton ? 50 : 8),
                             child: InkWell(
                               splashColor: Colors.deepPurpleAccent,
-                              onTap: ()=>moveToHome(context),
+                              onTap: () => moveToHome(context),
                               child: AnimatedContainer(
                                 duration: const Duration(milliseconds: 200),
                                 width: changeButton ? 50 : 150,

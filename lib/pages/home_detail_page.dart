@@ -11,12 +11,13 @@ class HomeDetailPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        foregroundColor: Colors.amber,
         backgroundColor: Colors.transparent,
         title: Text(catalog.name),
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: Theme.of(context).cardColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           // mainAxisSize: MainAxisSize.min,
@@ -29,7 +30,7 @@ class HomeDetailPage extends StatelessWidget {
             "\$${catalog.price}"
                 .text
                 .xl4
-                .color(MyTheme.darkBluishColor)
+                .color(Theme.of(context).primaryColorLight)
                 .bold
                 .make(),
             ElevatedButton(
@@ -43,7 +44,7 @@ class HomeDetailPage extends StatelessWidget {
               ),
             ).wh(120, 50),
           ],
-        ).p32(),
+        ).p24(),
       ),
       body: SafeArea(
         bottom: false,
@@ -59,28 +60,25 @@ class HomeDetailPage extends StatelessWidget {
                 arcType: VxArcType.CONVEY,
                 edge: VxEdge.TOP,
                 child: Container(
-                  color: Colors.white,
+                  color: Theme.of(context).canvasColor,
                   width: context.screenWidth,
-
                   child: SingleChildScrollView(
-                    
                     child: Column(
                       children: [
                         catalog.name.text.xl4
-                            .color(MyTheme.darkBluishColor)
+                            .color(Theme.of(context).primaryColorLight)
                             .bold
                             .make(),
                         catalog.desc.text.xl
-                            .color(MyTheme.darkBluishColor)
+                            .color(Theme.of(context).primaryColorLight)
                             .make(),
                         10.heightBox,
-                  
                         "Eiusmod eu sit duis officia cillum anim aliquip quis occaecat. Ipsum cillum sit ullamco minim occaecat occaecat velit tempor. Sint nostrud commodo ad nisi magna in in tempor Lorem elit dolore. Duis reprehenderit nisi eiusmod do irure "
                             .text
+                            .color(Theme.of(context).primaryColorLight)
                             .xl
                             .make()
                             .p16()
-                            
                       ],
                     ).py64(),
                   ),

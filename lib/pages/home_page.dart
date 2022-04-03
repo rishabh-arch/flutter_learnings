@@ -52,12 +52,12 @@ class _HomePageState extends State<HomePage> {
     //   (i) => CatalogModel.items[i],
     // );
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: Theme.of(context).canvasColor,
       floatingActionButton: FloatingActionButton(
         onPressed: () =>{
-          Navigator.pushNamed(context, MyRoutes.CartRoute)
+          Navigator.pushNamed(context, MyRoutes.loginRoute)
         },
-        backgroundColor: MyTheme.darkBluishColor,
+        backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
         child: const Icon(CupertinoIcons.cart),
       ),
       body: SafeArea(

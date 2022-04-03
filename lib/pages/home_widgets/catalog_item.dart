@@ -10,6 +10,7 @@ class CatalogItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VxBox(
+
       child: Row(
         children: [
           Hero(
@@ -20,8 +21,8 @@ class CatalogItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
-              catalog.desc.text.sm.color(MyTheme.darkBluishColor).make(),
+              catalog.name.text.lg.color(Theme.of(context).primaryColorLight).bold.make(),
+              catalog.desc.text.sm.color((Theme.of(context).primaryColorLight)).make(),
               10.heightBox,
               ButtonBar(
                 alignment: MainAxisAlignment.spaceBetween,
@@ -35,7 +36,7 @@ class CatalogItem extends StatelessWidget {
                   "\$${catalog.price}"
                       .text
                       .xl
-                      .color(MyTheme.darkBluishColor)
+                      .color(Theme.of(context).primaryColorLight)
                       .bold
                       .make(),
                   ElevatedButton(
@@ -54,6 +55,6 @@ class CatalogItem extends StatelessWidget {
           ))
         ],
       ),
-    ).white.roundedLg.square(150).make().py16();
+    ).color(Theme.of(context).cardColor).roundedLg.square(150).make().py16();
   }
 }
