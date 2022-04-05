@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -13,7 +14,7 @@ class CartPage extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-           _cartList().p(33).expand(),
+          _cartList().p(33).expand(),
           const Divider(),
           _cartTotal(),
         ],
@@ -23,6 +24,7 @@ class CartPage extends StatelessWidget {
 }
 
 class _cartTotal extends StatelessWidget {
+  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,12 +34,14 @@ class _cartTotal extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           // "Total".text.xl3.white.bold.make(),
-          "\$9999".text.xl3.white.bold.make(),
-          ElevatedButton(onPressed: () {
-ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Checkout"),));
-          },
-        
-          child: "Checkout".text.xl.make())
+          "\$${_cart.totalPrice}".text.xl3.white.bold.make(),
+          ElevatedButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("Checkout"),
+                ));
+              },
+              child: "Checkout".text.xl.make())
         ],
       ),
     );
@@ -50,15 +54,23 @@ class _cartList extends StatefulWidget {
 }
 
 class _cartListState extends State<_cartList> {
+  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (context, index)=>ListTile(
+    return _cart.items.isEmpty?"Nothing to show".text.color(Theme.of(context).secondaryHeaderColor).xl3.makeCentered(): ListView.builder(
+      itemCount: _cart.items.length,
+      itemBuilder: (context, index) => ListTile(
         leading: const Icon(Icons.done),
-        title: Text("Item $index"),
-        trailing: const Icon(Icons.remove_circle_outline),
-        textColor: Colors.white,
+        title: _cart.items[index].name.text.color(Theme.of(context).secondaryHeaderColor).make(),
+        trailing: IconButton(
+          icon: const Icon(Icons.remove_circle_outline),
+          onPressed: () {
+            _cart.removeItem(_cart.items[index]);
+            setState(() {});
+          },
+        ),
+
+        // textColor: Colors.white,
       ),
     );
   }
