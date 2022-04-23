@@ -22,6 +22,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final url = "https://api.jsonbin.io/b/6264380b25069545a327ee06";
   @override
   initState() {
     super.initState();
@@ -30,11 +31,15 @@ class _HomePageState extends State<HomePage> {
 
   loadData() async {
     await Future.delayed(const Duration(seconds: 2));
-    await rootBundle.loadString('assets/files/catalog.json').then((jsonStr) {
-      final jsonResponse = jsonDecode(jsonStr);
+
+    // await rootBundle.loadString('assets/files/catalog.json').then((jsonStr) {
+    final jsonStr = await http.get(Uri.parse(url)); 
+      final jsonResponse = jsonDecode(jsonStr.body);
       // final productsAsList = jsonResponse['products'] as List;
       // print(productsAsList);
+
       final productsData = jsonResponse['products'];
+
       CatalogModel.items = List.from(productsData)
           .map<Item>((item) => Item.fromJson(item))
           .toList();
@@ -44,7 +49,7 @@ class _HomePageState extends State<HomePage> {
       // setState(() {
       //   _catalog = catalog;
       // });
-    });
+    
   }
 
   @override
@@ -72,8 +77,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.white,
               fontSize: 12,
               fontWeight: FontWeight.bold,
-            )
-            ),
+            )),
       ),
       body: SafeArea(
         child: Container(
