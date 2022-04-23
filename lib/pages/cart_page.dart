@@ -3,6 +3,8 @@ import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../core/store.dart';
+
 class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class CartPage extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          _cartListState().p(33).expand(),
+          _cartList().p(33).expand(),
           const Divider(),
           _cartTotal(),
         ],
@@ -23,10 +25,12 @@ class CartPage extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class _cartTotal extends StatelessWidget {
-  final _cart = CartModel();
+
   @override
   Widget build(BuildContext context) {
+  final CartModel _cart = (VxState.store as MyStore).cart;
     return Container(
       padding: Vx.m8,
       height: 200,
@@ -34,7 +38,11 @@ class _cartTotal extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           // "Total".text.xl3.white.bold.make(),
-          "\$${_cart.totalPrice}".text.xl3.white.bold.make(),
+          VxConsumer(
+            builder: (context,_,__){
+          return "\$${_cart.totalPrice}".text.xl3.white.bold.make();
+          
+          }, mutations: const {RemoveMutation}, notifications: const {}),
           ElevatedButton(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -50,10 +58,12 @@ class _cartTotal extends StatelessWidget {
 
 
 
-class _cartListState extends StatelessWidget{
-  final _cart = CartModel();
+class _cartList extends StatelessWidget{
+ 
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutation]);
+  final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.items.isEmpty?"Nothing to show".text.color(Theme.of(context).secondaryHeaderColor).xl3.makeCentered(): ListView.builder(
       itemCount: _cart.items.length,
       itemBuilder: (context, index) => ListTile(
@@ -61,10 +71,7 @@ class _cartListState extends StatelessWidget{
         title: _cart.items[index].name.text.color(Theme.of(context).secondaryHeaderColor).make(),
         trailing: IconButton(
           icon: const Icon(Icons.remove_circle_outline),
-          onPressed: () {
-            _cart.removeItem(_cart.items[index]);
-            // setState(() {});
-          },
+          onPressed: ()=> RemoveMutation(_cart.items[index]),
         ),
 
         // textColor: Colors.white,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/pages/home_widgets/catalog_header.dart';
 import 'package:flutter_catalog/pages/home_widgets/catalog_list.dart';
@@ -10,6 +11,8 @@ import 'package:flutter_catalog/widgets/item_widget.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
 import 'dart:convert';
 import 'package:velocity_x/velocity_x.dart';
+import '../core/store.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -51,14 +54,26 @@ class _HomePageState extends State<HomePage> {
     //   CatalogModel.items.length,
     //   (i) => CatalogModel.items[i],
     // );
+    final _cart = (VxState.store as MyStore).cart;
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>{
-          Navigator.pushNamed(context, MyRoutes.CartRoute)
-        },
-        backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
-        child: const Icon(CupertinoIcons.cart),
+      floatingActionButton: VxBuilder(
+        mutations: const {AddMutation, RemoveMutation},
+        builder: (ctx, _, __) => FloatingActionButton(
+          onPressed: () => {Navigator.pushNamed(context, MyRoutes.CartRoute)},
+          backgroundColor:
+              Theme.of(context).floatingActionButtonTheme.backgroundColor,
+          child: const Icon(CupertinoIcons.cart),
+        ).badge(
+            color: const Color.fromARGB(255, 227, 22, 22),
+            size: 25,
+            count: _cart.items.length,
+            textStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            )
+            ),
       ),
       body: SafeArea(
         child: Container(
@@ -69,15 +84,9 @@ class _HomePageState extends State<HomePage> {
               if (CatalogModel.items.isNotEmpty)
                 CatalogList().py16().expand()
               else
-               const CircularProgressIndicator().centered().py16().expand(),
+                const CircularProgressIndicator().centered().py16().expand(),
             ])),
       ),
     );
   }
 }
-
-
-
-
-
-

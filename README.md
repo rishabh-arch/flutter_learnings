@@ -3,6 +3,7 @@ At first IDK anything about Dart, so i am going to learn it through project and 
 
 ## Installing first time
 I got some problems while creating setup environment for flutter
+```flutter pub add http```
 
 ### problems - 
 1. - [Flutter](https://flutter.dev/docs),Doctor said I am not healthy so i need to follow his conditions
