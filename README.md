@@ -5,6 +5,8 @@ At first IDK anything about Dart, so i am going to learn it through project and 
 I got some problems while creating setup environment for flutter
 ```flutter pub add http```
 
+Flutter Roadmap: ![Flutter Roadmap](https://github.com/rishabh-arch/flutter_learnings/blob/Day12/Flutter%20Roadmap.png?raw=true)
+
 ### problems - 
 1. - [Flutter](https://flutter.dev/docs),Doctor said I am not healthy so i need to follow his conditions
         by installing all stuffs as he said.
